@@ -7,13 +7,13 @@
     <style>
         :root {
             --bg-dark: #000000;
-            --bg-card: #0b1119;
-            --neon-green: #39ff14;
-            --neon-glow: rgba(57, 255, 20, 0.2);
+            --bg-card: #0c1622;
+            --baby-blue: #3a9ad9;
+            --blue-glow: rgba(58, 154, 217, 0.25);
             --text-main: #ffffff;
-            --text-muted: #8e9aa8;
-            --border-color: #16222f;
-            --btn-blue: #2b39ff;
+            --text-muted: #8ea1b4;
+            --border-color: #1c2e42;
+            --btn-blue: #1d5fa7;
         }
 
         * {
@@ -32,7 +32,6 @@
             min-height: 100vh;
         }
 
-        /* --- NAVBAR --- */
         .navbar {
             background-color: var(--bg-card);
             border-bottom: 1px solid var(--border-color);
@@ -45,46 +44,29 @@
             z-index: 100;
         }
 
-        .nav-left {
-            display: flex;
-            align-items: center;
-        }
+        .nav-left { display: flex; align-items: center; }
+        .menu-btn { background: none; border: none; color: var(--text-main); font-size: 24px; cursor: pointer; margin-right: 20px; padding: 0; }
+        .nav-title { font-size: 22px; font-weight: 500; color: var(--baby-blue); }
 
-        .menu-btn {
-            background: none;
-            border: none;
-            color: var(--text-main);
-            font-size: 24px;
-            cursor: pointer;
-            margin-right: 20px;
-            padding: 0;
-        }
-
-        .nav-title {
-            font-size: 22px;
-            font-weight: 500;
-        }
-
-        /* BTN TOP RIGHT CONNECT */
         .btn-connect {
             background-color: transparent;
-            border: 1px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 6px 12px;
+            border: 1px solid var(--baby-blue);
+            color: var(--baby-blue);
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 13px;
             cursor: pointer;
             font-weight: bold;
-            box-shadow: 0 0 5px var(--neon-glow);
+            box-shadow: 0 0 8px var(--blue-glow);
             transition: all 0.2s ease;
         }
         
         .btn-connect.connected {
-            background-color: var(--neon-green);
+            background-color: var(--baby-blue);
             color: #000;
+            box-shadow: 0 0 12px var(--baby-blue);
         }
 
-        /* --- SEITENMENÜ (DRAWER) --- */
         .sidebar {
             position: fixed;
             top: 0;
@@ -101,246 +83,35 @@
         }
 
         .sidebar.open { left: 0; }
+        .sidebar-header { font-size: 24px; font-weight: bold; color: var(--baby-blue); margin-bottom: 5px; }
+        .sidebar-warning { font-size: 11px; color: #ff5555; margin-bottom: 25px; line-height: 1.3; }
 
-        .sidebar-header {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--text-main);
-            margin-bottom: 5px;
-        }
-
-        .sidebar-warning {
-            font-size: 11px;
-            color: #ff4444;
-            margin-bottom: 25px;
-            line-height: 1.3;
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            color: var(--text-main);
-            text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .menu-item.active, .menu-item:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--neon-green);
-        }
-
+        .menu-item { display: flex; align-items: center; padding: 12px 15px; color: var(--text-main); text-decoration: none; border-radius: 8px; margin-bottom: 8px; font-weight: 500; cursor: pointer; }
+        .menu-item.active, .menu-item:hover { background-color: rgba(58, 154, 217, 0.1); color: var(--baby-blue); }
         .menu-item span { margin-right: 15px; font-size: 18px; }
 
-        .disconnect-btn {
-            margin-top: auto;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-        }
+        .disconnect-btn { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 140; display: none; }
 
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.6);
-            z-index: 140;
-            display: none;
-        }
-
-        /* --- MAIN CONTENT PANELS --- */
-        .view-content {
-            padding: 20px;
-            max-width: 600px;
-            width: 100%;
-            margin: 0 auto;
-            display: none;
-        }
-
+        .view-content { padding: 20px; max-width: 600px; width: 100%; margin: 0 auto; display: none; }
         .view-content.active { display: block; }
 
-        h2 { font-size: 22px; margin-top: 0; margin-bottom: 5px; font-weight: 500; }
-        h3 { font-size: 18px; margin-top: 15px; margin-bottom: 15px; color: var(--text-muted); font-weight: 400; }
-
-        .sub-desc {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        /* --- KACHELN / ACCORDEONS --- */
-        .card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .acc-card { padding: 0 16px; }
-
-        .acc-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            padding: 16px 0;
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        .acc-content {
-            display: none;
-            padding-bottom: 16px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-        }
-
-        .acc-card.open .acc-content { display: block; }
-
-        .arrow {
-            transition: transform 0.2s ease;
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-
-        .acc-card.open .arrow { transform: rotate(180deg); color: var(--neon-green); }
-
-        /* --- BLUE BUTTONS --- */
-        .btn-blue {
-            background-color: var(--btn-blue);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 6px;
-            width: 100%;
-            font-size: 14px;
-            cursor: pointer;
-            margin-bottom: 10px;
-            text-align: left;
-        }
-
-        .btn-outline {
-            background: none;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        .btn-group { display: flex; gap: 10px; margin-bottom: 10px; }
-        .btn-group .btn-outline { flex: 1; }
-
-        /* --- INPUT ELEMENTS --- */
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        .info-row span:last-child {
-            font-weight: bold;
-        }
-        .info-label { color: var(--text-muted); }
-
-        .chip-group { display: flex; gap: 6px; margin-bottom: 15px; }
-        .chip {
-            background-color: #121b26;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-        }
-        .chip.active {
-            background-color: rgba(57, 255, 20, 0.15);
-            border-color: var(--neon-green);
-            color: var(--neon-green);
-        }
-
-        select {
-            width: 100%;
-            background-color: #121b26;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 10px;
-            border-radius: 6px;
-            outline: none;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .slider-container { margin-bottom: 18px; }
-        .slider-header { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
-        .slider-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.3; }
-        .slider-controls { display: flex; align-items: center; gap: 12px; }
+        h2 { font-size: 22px; margin-top: 0; margin-bottom: 5px; font-weight: 500; color: var(--baby-blue); }
+        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 12px; }
         
-        .val-badge {
-            background-color: #121b26;
-            border: 1px solid var(--border-color);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 13px;
-            min-width: 45px;
-            text-align: center;
-        }
+        .acc-card { padding: 0 16px; }
+        .acc-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 16px 0; font-size: 15px; font-weight: 500; }
+        .acc-content { display: none; padding-bottom: 16px; border-top: 1px solid var(--border-color); padding-top: 16px; }
+        .acc-card.open .acc-content { display: block; }
+        
+        .val-badge { background-color: #132233; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px; font-size: 13px; color: var(--baby-blue); }
 
-        input[type="range"] {
-            -webkit-appearance: none;
-            flex: 1;
-            height: 4px;
-            background: #192535;
-            border-radius: 2px;
-            outline: none;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--neon-green);
-            cursor: pointer;
-            box-shadow: 0 0 6px var(--neon-glow);
-        }
-
-        .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .switch { position: relative; display: inline-block; width: 40px; height: 22px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider-sw {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #192535; border-radius: 22px; transition: .2s;
-        }
-        .slider-sw:before {
-            position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px;
-            background-color: white; border-radius: 50%; transition: .2s;
-        }
-        input:checked + .slider-sw { background-color: var(--neon-green); }
-        input:checked + .slider-sw:before { transform: translateX(18px); background-color: #000; }
-
-        .action-grid { display: flex; gap: 10px; }
-        .action-grid .btn-outline { flex: 1; padding: 15px; font-size: 16px; }
-
-        .curve-box {
-            width: 100%; height: 100px; border-left: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
-            margin: 10px 0 15px 0; position: relative;
-        }
-        .curve-svg { width: 100%; height: 100%; stroke: var(--neon-green); stroke-width: 2; fill: none; }
-
-        .upload-box {
-            border: 2px dashed var(--border-color); padding: 30px; text-align: center; border-radius: 8px; cursor: pointer; color: var(--text-muted);
-        }
+        input[type="range"] { -webkit-appearance: none; flex: 1; height: 4px; background: #1e354f; border-radius: 2px; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--baby-blue); cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- NAV BAR -->
     <div class="navbar">
         <div class="nav-left">
             <button class="menu-btn" onclick="toggleMenu()">☰</button>
@@ -349,116 +120,33 @@
         <button class="btn-connect" id="btn-ble" onclick="connectScooter()">Connect</button>
     </div>
 
-    <!-- SIDEBAR DRAWER -->
     <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Luna</div>
-        <div class="sidebar-warning">We assume no responsibility for damage to your vehicle caused by this software.</div>
-        
         <div class="menu-item active" onclick="navigate('home', 'Luna')"><span>🏠</span> Home</div>
-        <div class="menu-item" onclick="navigate('settings', 'SHFW settings')"><span>⚙️</span> Settings</div>
-        <div class="menu-item" onclick="navigate('firmware', 'Firmware')"><span>💾</span> Firmware</div>
-        
+        <div class="menu-item" onclick="navigate('settings', 'Settings')"><span>⚙️</span> Settings</div>
         <div class="menu-item disconnect-btn" onclick="disconnectScooter()"><span>🔌</span> Disconnect</div>
     </div>
 
-    <!-- VIEW 1: HOME -->
     <div class="view-content active" id="panel-home">
         <div class="card">
-            <h3 style="margin-top:0; font-weight:500; color:white;">About vehicle</h3>
-            <div class="info-row"><span class="info-label">Status:</span><span id="ble-status" style="color:#ff4444;">Disconnected</span></div>
-            <div class="info-row"><span class="info-label">Model:</span><span id="scooter-model">Ninebot G2 Max</span></div>
-            <div class="info-row"><span class="info-label">Serial number:</span><span>N4G... (Koppeln erforderlich)</span></div>
-            <div class="info-row"><span class="info-label">ESC Version:</span><span>SHFW OS Base</span></div>
-            
-            <button class="btn-blue" style="margin-top:15px;" onclick="alert('Lese UID aus...')">Show ESC UID</button>
-            <button class="btn-blue">Change ESC serial number</button>
-        </div>
-
-        <div class="card">
-            <h3 style="margin-top:0; font-weight:500; color:white;">Quick actions</h3>
-            <div class="action-grid">
-                <button class="btn-outline" onclick="alert('Scooter gesperrt!')">🔒</button>
-                <button class="btn-outline" onclick="alert('Scooter ausgeschaltet!')">⏻</button>
-            </div>
+            <h3>Vehicle Status</h3>
+            <div style="color:var(--text-muted);">Status: <span id="ble-status" style="color:#ff5555;">Disconnected</span></div>
         </div>
     </div>
 
-    <!-- VIEW 2: SETTINGS -->
     <div class="view-content" id="panel-settings">
-        <h2>SHFW settings</h2>
-        <div class="sub-desc">Controls which profile is currently being configured.</div>
-
-        <div class="card">
-            <div class="slider-header"><span style="color:var(--text-muted)">Selected profile</span></div>
-            <select>
-                <option>Profile 1</option>
-                <option>Profile 2</option>
-                <option>Profile 3</option>
-            </select>
-        </div>
-
-        <h3>Profile settings</h3>
-
-        <!-- ACCELERATION -->
+        <h2>Settings</h2>
         <div class="card acc-card" id="k-accel">
-            <div class="acc-header" onclick="toggleKachel('k-accel')"><span>Acceleration</span><span class="arrow">▼</span></div>
+            <div class="acc-header" onclick="document.getElementById('k-accel').classList.toggle('open')"><span>Speed limit</span><span class="arrow">▼</span></div>
             <div class="acc-content">
-                <div class="chip-group">
-                    <div class="chip">E</div><div class="chip">D</div><div class="chip active">S</div>
-                </div>
-                <div class="slider-container">
-                    <div class="slider-header"><span>Speed limit</span></div>
-                    <div class="slider-controls">
-                        <input type="range" min="1" max="45" value="22" oninput="syncVal(this, 'lbl-sl')">
-                        <div class="val-badge" id="lbl-sl">22</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- REGENERATIVE BRAKING -->
-        <div class="card acc-card" id="k-regen">
-            <div class="acc-header" onclick="toggleKachel('k-regen')"><span>Regenerative braking</span><span class="arrow">▼</span></div>
-            <div class="acc-content">
-                <div class="slider-container">
-                    <div class="slider-header"><span>Minimum speed</span></div>
-                    <div class="slider-controls">
-                        <input type="range" min="0" max="20" value="4" oninput="syncVal(this, 'lbl-mins')">
-                        <div class="val-badge" id="lbl-mins">4</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- MOTOR ALGORITHM -->
-        <div class="card acc-card" id="k-motor">
-            <div class="acc-header" onclick="toggleKachel('k-motor')"><span>Motor algorithm</span><span class="arrow">▼</span></div>
-            <div class="acc-content">
-                <div class="slider-container">
-                    <div class="slider-header"><span>Torque phase current limit</span></div>
-                    <div class="slider-controls">
-                        <input type="range" min="10" max="100" value="55" oninput="syncVal(this, 'lbl-tq')">
-                        <div class="val-badge" id="lbl-tq">55</div>
-                    </div>
-                </div>
+                <input type="range" min="1" max="45" value="22" oninput="document.getElementById('val-sl').innerText = this.value">
+                <span class="val-badge" id="val-sl">22</span>
             </div>
         </div>
     </div>
 
-    <!-- VIEW 3: FIRMWARE -->
-    <div class="view-content" id="panel-firmware">
-        <h2>Firmware</h2>
-        <div class="card">
-            <button class="btn-blue" onclick="alert('Flashe SHFW v3.10.3...')">Install SHFW (v3.10.3)</button>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT SYSTEM LOGIK -->
     <script>
-        let gattServer = null;
-        let bleDevice = null;
-
         function toggleMenu() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
@@ -473,65 +161,26 @@
             toggleMenu();
         }
 
-        function toggleKachel(id) {
-            document.getElementById(id).classList.toggle('open');
-        }
-
-        function syncVal(slider, badgeId) {
-            document.getElementById(badgeId).innerText = slider.value;
-        }
-
-        // --- WEB BLUETOOTH NINEBOT G2 MAX LOGIK ---
         async function connectScooter() {
-            const connectBtn = document.getElementById('btn-ble');
-            const statusLabel = document.getElementById('ble-status');
-
             try {
-                statusLabel.innerText = "Searching...";
-                statusLabel.style.color = "#ffaa00";
-
-                // Sucht nach typischen Bezeichnungen für Ninebot / Segway Scooter
-                bleDevice = await navigator.bluetooth.requestDevice({
-                    filters: [
-                        { namePrefix: 'Ninebot' },
-                        { namePrefix: 'Segway' },
-                        { namePrefix: 'G2' }
-                    ],
-                    optionalServices: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e'] // Nordic UART (Standard für Tuning-Befehle)
+                const device = await navigator.bluetooth.requestDevice({
+                    filters: [{ namePrefix: 'Ninebot' }],
+                    optionalServices: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']
                 });
-
-                statusLabel.innerText = "Connecting...";
-                gattServer = await bleDevice.gatt.connect();
-
-                // Interface-Update
-                statusLabel.innerText = "Connected";
-                statusLabel.style.color = "#39ff14";
-                connectBtn.innerText = "Connected";
-                connectBtn.classList.add('connected');
-                document.getElementById('scooter-model').innerText = bleDevice.name;
-
-                alert("Successfully connected to: " + bleDevice.name);
-
-            } catch (error) {
-                console.error(error);
-                statusLabel.innerText = "Disconnected";
-                statusLabel.style.color = "#ff4444";
-                alert("Connection failed: " + error.message);
+                document.getElementById('ble-status').innerText = "Connected";
+                document.getElementById('ble-status').style.color = "#3a9ad9";
+                document.getElementById('btn-ble').innerText = "Connected";
+                document.getElementById('btn-ble').classList.add('connected');
+            } catch (err) {
+                alert("Connection failed: " + err.message);
             }
         }
 
         function disconnectScooter() {
-            if (bleDevice && bleDevice.gatt.connected) {
-                bleDevice.gatt.disconnect();
-            }
             document.getElementById('ble-status').innerText = "Disconnected";
-            document.getElementById('ble-status').style.color = "#ff4444";
-            
-            const connectBtn = document.getElementById('btn-ble');
-            connectBtn.innerText = "Connect";
-            connectBtn.classList.remove('connected');
-            
-            alert("Disconnected from scooter.");
+            document.getElementById('ble-status').style.color = "#ff5555";
+            document.getElementById('btn-ble').innerText = "Connect";
+            document.getElementById('btn-ble').classList.remove('connected');
             toggleMenu();
         }
     </script>
