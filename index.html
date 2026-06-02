@@ -51,16 +51,14 @@
             font-size: 24px;
             cursor: pointer;
             margin-right: 20px;
-            padding: 0;
         }
 
         .nav-title {
             font-size: 22px;
             font-weight: bold;
-            color: var(--text-main);
         }
 
-        /* --- SIDE DRAWER MENU --- */
+        /* --- SIDEBAR MENU --- */
         .sidebar {
             position: fixed;
             top: 0;
@@ -76,23 +74,19 @@
             flex-direction: column;
         }
 
-        .sidebar.open {
-            left: 0;
-        }
+        .sidebar.open { left: 0; }
 
         .sidebar-header {
             font-size: 24px;
             font-weight: bold;
             color: var(--neon-green);
             margin-bottom: 5px;
-            text-shadow: 0 0 5px var(--neon-glow);
         }
 
         .sidebar-warning {
             font-size: 11px;
             color: var(--text-muted);
             margin-bottom: 30px;
-            line-height: 1.3;
         }
 
         .menu-item {
@@ -103,7 +97,6 @@
             text-decoration: none;
             border-radius: 8px;
             margin-bottom: 10px;
-            font-weight: 500;
             cursor: pointer;
         }
 
@@ -113,24 +106,9 @@
             border-left: 4px solid var(--neon-green);
         }
 
-        .menu-item span {
-            margin-right: 15px;
-            font-size: 18px;
-        }
-
-        .disconnect-btn {
-            margin-top: auto;
-            border-top: 1px solid var(--border-color);
-            padding-top: 15px;
-            color: #ff3366;
-        }
-
         .sidebar-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.7);
             z-index: 140;
             display: none;
@@ -145,29 +123,16 @@
             display: none;
         }
 
-        .view-content.active {
-            display: block;
-        }
+        .view-content.active { display: block; }
+        .sub-desc { color: var(--text-muted); font-size: 13px; margin-bottom: 20px; }
 
-        h2 {
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 5px;
-        }
-
-        .sub-desc {
-            color: var(--text-muted);
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
-
-        /* --- CARDS & ACCORDEONS --- */
+        /* --- ACCORDIONS --- */
         .card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
+            padding: 15px;
+            margin-bottom: 12px;
         }
 
         .acc-header {
@@ -175,248 +140,97 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            padding: 15px 0;
             font-weight: bold;
-            font-size: 16px;
-            border-bottom: 1px solid transparent;
-        }
-
-        .acc-card {
-            padding: 0 20px;
-        }
-
-        .acc-card.open .acc-header {
-            border-bottom: 1px solid var(--border-color);
-            color: var(--neon-green);
+            font-size: 15px;
         }
 
         .acc-content {
             display: none;
-            padding: 15px 0 5px 0;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 12px;
         }
 
-        .acc-card.open .acc-content {
-            display: block;
-        }
+        .acc-card.open .acc-content { display: block; }
+        .acc-card.open .acc-header { color: var(--neon-green); }
+        .arrow { transition: transform 0.2s; color: var(--text-muted); }
+        .acc-card.open .arrow { transform: rotate(180deg); color: var(--neon-green); }
 
-        .arrow {
-            transition: transform 0.2s ease;
-            font-size: 12px;
-            color: var(--text-muted);
-        }
-
-        .acc-card.open .arrow {
-            transform: rotate(180deg);
-            color: var(--neon-green);
-        }
-
-        /* --- FORM ELEMENTS (SLIDERS, BUTTONS, SELECTIONS) --- */
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
+        /* --- INPUTS, SLIDERS, BUTTONS --- */
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; }
         .info-label { color: var(--text-muted); }
-        .info-value { font-weight: bold; }
-
+        
         .btn {
-            background-color: rgba(57, 255, 20, 0.1);
+            background-color: rgba(57, 255, 20, 0.05);
             border: 1px solid var(--neon-green);
             color: var(--neon-green);
-            padding: 12px;
+            padding: 10px;
             border-radius: 8px;
             width: 100%;
             font-weight: bold;
             cursor: pointer;
-            margin-bottom: 10px;
-            text-shadow: 0 0 2px var(--neon-glow);
-            transition: all 0.2s;
+            margin-bottom: 8px;
         }
 
-        .btn:active {
-            background-color: var(--neon-green);
-            color: #000;
-        }
+        .btn:active { background-color: var(--neon-green); color: #000; }
+        .btn-group { display: flex; gap: 10px; }
 
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        /* Mode Selector Buttons (E, D, S) */
-        .mode-selector {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
+        .mode-selector { display: flex; gap: 8px; margin-bottom: 15px; }
         .mode-chip {
             background-color: #1a2333;
             border: 1px solid var(--border-color);
             color: var(--text-main);
-            padding: 8px 16px;
+            padding: 6px 14px;
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
         }
+        .mode-chip.active { background-color: var(--neon-green); color: #000; box-shadow: 0 0 8px var(--neon-green); }
 
-        .mode-chip.active {
-            background-color: var(--neon-green);
-            color: #000;
-            border-color: var(--neon-green);
-            box-shadow: 0 0 8px var(--neon-green);
-        }
-
-        /* Custom Select Input */
         select {
-            width: 100%;
-            background-color: #1a2333;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            padding: 12px;
-            border-radius: 8px;
-            outline: none;
-            font-size: 14px;
-            appearance: none;
-            margin-bottom: 15px;
+            width: 100%; background-color: #1a2333; border: 1px solid var(--border-color);
+            color: var(--text-main); padding: 10px; border-radius: 8px; margin-bottom: 15px;
         }
 
-        /* Sliders */
-        .slider-wrapper {
-            margin-bottom: 20px;
-        }
+        .slider-wrapper { margin-bottom: 15px; }
+        .slider-meta { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 4px; }
+        .slider-desc { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+        .slider-control-box { display: flex; align-items: center; gap: 10px; }
+        .slider-num-badge { background-color: #1a2333; padding: 4px 8px; border-radius: 6px; font-size: 12px; min-width: 65px; text-align: center; }
 
-        .slider-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 14px;
-            margin-bottom: 6px;
-        }
+        input[type="range"] { -webkit-appearance: none; flex-grow: 1; height: 4px; background: #1a2333; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--neon-green); }
 
-        .slider-desc {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .slider-control-box {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .slider-num-badge {
-            background-color: #1a2333;
-            border: 1px solid var(--border-color);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            min-width: 60px;
-            text-align: center;
-        }
-
-        input[type="range"] {
-            -webkit-appearance: none;
-            flex-grow: 1;
-            height: 6px;
-            background: #1a2333;
-            border-radius: 3px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: var(--neon-green);
-            box-shadow: 0 0 6px var(--neon-green);
-            cursor: pointer;
-        }
-
-        /* Toggle Switches */
-        .toggle-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 46px;
-            height: 24px;
-        }
-
+        .switch { position: relative; display: inline-block; width: 40px; height: 20px; }
         .switch input { opacity: 0; width: 0; height: 0; }
+        .slider-switch { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #1a2333; border-radius: 20px; transition: .3s; }
+        .slider-switch:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: .3s; }
+        input:checked + .slider-switch { background-color: var(--neon-green); }
+        input:checked + .slider-switch:before { transform: translateX(20px); background-color: #000; }
 
-        .slider-switch {
-            position: absolute;
-            cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: #1a2333;
-            border-radius: 24px;
-            transition: .3s;
+        /* GRAPH MOCK */
+        .graph-mock { width: 100%; height: 80px; border-left: 2px solid var(--border-color); border-bottom: 2px solid var(--border-color); margin: 10px 0; position: relative; }
+        .graph-line { position: absolute; width: 100%; height: 2px; background: var(--neon-green); bottom: 20px; transform: rotate(8deg); transform-origin: left bottom; }
+
+        /* --- MODAL POPUP (CURVE BUILDER) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-
-        .slider-switch:before {
-            position: absolute;
-            content: "";
-            height: 18px; width: 18px;
-            left: 3px; bottom: 3px;
-            background-color: white;
-            border-radius: 50%;
-            transition: .3s;
-        }
-
-        input:checked + .slider-switch {
-            background-color: var(--neon-green);
-        }
-
-        input:checked + .slider-switch:before {
-            transform: translateX(22px);
-            background-color: #000;
-        }
-
-        /* Quick actions footer button sync style */
-        .quick-actions {
-            display: flex;
-            gap: 15px;
-        }
-
-        /* --- GRAPH MOCKUP --- */
-        .graph-mock {
+        .modal-box {
+            background-color: var(--bg-card);
+            border: 2px solid var(--neon-green);
+            box-shadow: 0 0 20px var(--neon-glow);
+            border-radius: 16px;
             width: 100%;
-            height: 120px;
-            border-left: 2px solid var(--border-color);
-            border-bottom: 2px solid var(--border-color);
-            margin: 15px 0;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
-            padding-left: 5px;
-        }
-
-        .graph-line {
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            background: var(--neon-green);
-            bottom: 30%;
-            transform: rotate(10deg);
-            transform-origin: left bottom;
-            box-shadow: 0 0 8px var(--neon-green);
-        }
-
-        .graph-label {
-            position: absolute;
-            font-size: 9px;
-            color: var(--text-muted);
+            max-width: 450px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -428,180 +242,184 @@
         <div class="nav-title" id="navTitle">Luna</div>
     </div>
 
-    <!-- SIDEBAR DRAW MENU -->
+    <!-- OVERLAYS -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- CURVE BUILDER MODAL POPUP -->
+    <div class="modal-overlay" id="curveModal">
+        <div class="modal-box">
+            <h3 style="color: var(--neon-green); margin-top: 0;">Curve Builder</h3>
+            <p class="slider-desc">Verschiebe die Stützpunkte, um das Fahrverhalten anzupassen.</p>
+            
+            <div class="graph-mock" style="height: 150px; margin-bottom: 20px;">
+                <div class="graph-line" id="modal-curve-line" style="transform: rotate(15deg);"></div>
+            </div>
+
+            <div class="slider-wrapper">
+                <div class="slider-meta"><span>Point 1 (Start-Drehmoment)</span></div>
+                <input type="range" min="0" max="100" value="25" oninput="document.getElementById('p1-lbl').innerText = this.value + 'A'; adjustModalGraph();">
+                <span id="p1-lbl" style="font-size:12px; color:var(--neon-green)">25A</span>
+            </div>
+            <div class="slider-wrapper">
+                <div class="slider-meta"><span>Point 2 (Maximal-Leistung)</span></div>
+                <input type="range" min="0" max="100" value="75" oninput="document.getElementById('p2-lbl').innerText = this.value + 'A'; adjustModalGraph();">
+                <span id="p2-lbl" style="font-size:12px; color:var(--neon-green)">75A</span>
+            </div>
+
+            <button class="btn" style="margin-top: 15px;" onclick="closeCurveBuilder()">Speichern & Schließen</button>
+        </div>
+    </div>
+
+    <!-- SIDEBAR DRAW MENU -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">Luna</div>
-        <div class="sidebar-warning">We assume no responsibility for damage to your vehicle caused by this software.</div>
-        
-        <div class="menu-item active" onclick="switchView('home', 'Luna')"><span>🏠</span> Home</div>
-        <div class="menu-item" onclick="switchView('settings', 'SHFW settings')"><span>⚙️</span> Settings</div>
-        <div class="menu-item" onclick="switchView('firmware', 'Firmware')"><span>💾</span> Firmware</div>
-        
-        <div class="menu-item disconnect-btn" onclick="toggleSidebar()"><span>🔌</span> Disconnect</div>
+        <div class="sidebar-warning">We assume no responsibility for damage to your vehicle.</div>
+        <div class="menu-item active" onclick="switchView('home', 'Luna')">🏠 Home</div>
+        <div class="menu-item" onclick="switchView('settings', 'SHFW settings')">⚙️ Settings</div>
+        <div class="menu-item" onclick="switchView('firmware', 'Firmware')">💾 Firmware</div>
     </div>
 
     <!-- VIEW 1: HOME VIEW -->
     <div class="view-content active" id="view-home">
         <div class="card">
             <h3>About vehicle</h3>
-            <div class="info-row"><span class="info-label">Model:</span><span class="info-value">Ninebot G30</span></div>
-            <div class="info-row"><span class="info-label">Serial number:</span><span class="info-value">N4GEB2232C1050</span></div>
-            <div class="info-row"><span class="info-label">BLE:</span><span class="info-value">1.1.8</span></div>
-            <div class="info-row"><span class="info-label">ESC:</span><span class="info-value">3.10.3 (SHFW)</span></div>
-            <div class="info-row"><span class="info-label">BMS:</span><span class="info-value">7.4.5 (v1)</span></div>
-            
-            <button class="btn" style="margin-top: 15px;">Show ESC UID</button>
+            <div class="info-row"><span class="info-label">Model:</span><span>Ninebot G30</span></div>
+            <div class="info-row"><span class="info-label">Serial number:</span><span>N4GEB2232C1050</span></div>
+            <div class="info-row"><span class="info-label">BLE:</span><span>1.1.8</span></div>
+            <div class="info-row"><span class="info-label">ESC:</span><span>3.10.3 (SHFW)</span></div>
+            <div class="info-row"><span class="info-label">BMS:</span><span>7.4.5 (v1)</span></div>
+            <button class="btn" style="margin-top:10px;">Show ESC UID</button>
             <button class="btn">Change ESC serial number</button>
-            <button class="btn">Change bluetooth name</button>
-            <button class="btn">Change vehicle model</button>
-        </div>
-
-        <div class="card">
-            <h3>Quick actions</h3>
-            <div class="quick-actions">
-                <button class="btn">🔒 Lock</button>
-                <button class="btn" style="border-color: #ff3366; color: #ff3366;">⚡ Power Off</button>
-            </div>
         </div>
     </div>
 
     <!-- VIEW 2: SHFW SETTINGS VIEW -->
     <div class="view-content" id="view-settings">
         <h2>SHFW settings</h2>
-        <div class="sub-desc">Controls which profile is currently being configured.</div>
+        <div class="sub-desc">Profile configuration interface</div>
 
+        <!-- PROFILE SELECTOR -->
         <div class="card">
-            <div class="slider-meta"><span style="font-weight: bold;">Selected profile</span></div>
-            <select>
-                <option>Profile 1</option>
-                <option>Profile 2</option>
-                <option>Profile 3</option>
-            </select>
+            <div class="slider-meta"><span>Selected profile</span></div>
+            <select><option>Profile 1</option><option>Profile 2</option></select>
             <div class="btn-group">
                 <button class="btn">Copy profile</button>
                 <button class="btn">Reset profile</button>
             </div>
-            <button class="btn">Reset settings</button>
         </div>
 
         <h3>Profile settings</h3>
 
-        <!-- ACCORDEON 1: ACCELERATION -->
-        <div class="card acc-card open" id="acc-acceleration">
-            <div class="acc-header" onclick="toggleAcc('acc-acceleration')">
-                <span>Acceleration</span><span class="arrow">▼</span>
-            </div>
+        <!-- 1. ACCELERATION -->
+        <div class="card acc-card" id="acc-acceleration">
+            <div class="acc-header" onclick="toggleAcc('acc-acceleration')"><span>Acceleration</span><span class="arrow">▼</span></div>
             <div class="acc-content">
-                <div class="slider-meta"><span>Selected mode</span></div>
                 <div class="mode-selector">
-                    <div class="mode-chip">E</div>
-                    <div class="mode-chip">D</div>
-                    <div class="mode-chip active">S</div>
+                    <div class="mode-chip">E</div><div class="mode-chip">D</div><div class="mode-chip active">S</div>
                 </div>
-
                 <div class="slider-wrapper">
                     <div class="slider-meta"><span>Speed limit</span></div>
-                    <div class="slider-desc">The maximum speed the vehicle will be allowed to reach</div>
                     <div class="slider-control-box">
                         <input type="range" min="5" max="45" value="15" oninput="updateVal(this, 'speed-lbl', ' km/h')">
                         <div class="slider-num-badge" id="speed-lbl">15 km/h</div>
                     </div>
                 </div>
-
-                <div class="slider-meta"><span>Accelerator input type</span></div>
-                <select>
-                    <option>Current</option>
-                    <option>Speed</option>
-                </select>
-
-                <div class="slider-meta"><span>Acceleration curve</span></div>
-                <div class="slider-desc">A curve that controls how much current is requested mapped to accelerator input</div>
-                <div class="graph-mock">
-                    <div class="graph-line"></div>
-                    <div class="graph-label" style="bottom: 0; left: 0;">0%</div>
-                    <div class="graph-label" style="bottom: 0; right: 0;">100%</div>
-                </div>
-                <button class="btn">Open curve builder</button>
-                <button class="btn">Set point values individually</button>
+                <button class="btn" onclick="openCurveBuilder()">Open curve builder</button>
             </div>
         </div>
 
-        <!-- ACCORDEON 2: REGENERATIVE BRAKING -->
+        <!-- 2. REGENERATIVE BRAKING -->
         <div class="card acc-card" id="acc-regen">
-            <div class="acc-header" onclick="toggleAcc('acc-regen')">
-                <span>Regenerative braking</span><span class="arrow">▼</span>
-            </div>
+            <div class="acc-header" onclick="toggleAcc('acc-regen')"><span>Regenerative braking</span><span class="arrow">▼</span></div>
             <div class="acc-content">
                 <div class="slider-wrapper">
                     <div class="slider-meta"><span>Minimum speed</span></div>
-                    <div class="slider-desc">Minimum speed before the vehicle will use regenerative braking</div>
                     <div class="slider-control-box">
                         <input type="range" min="0" max="20" value="4" oninput="updateVal(this, 'regen-lbl', ' km/h')">
                         <div class="slider-num-badge" id="regen-lbl">4 km/h</div>
                     </div>
                 </div>
-                <button class="btn">Open curve builder</button>
-                <div class="toggle-wrapper">
-                    <span>Auto-brake current</span>
-                    <label class="switch"><input type="checkbox" checked><span class="slider-switch"></span></label>
-                </div>
+                <button class="btn" onclick="openCurveBuilder()">Open curve builder</button>
             </div>
         </div>
 
-        <!-- ACCORDEON 3: MOTOR ALGORITHM -->
+        <!-- 3. MOTOR ALGORITHM -->
         <div class="card acc-card" id="acc-motor">
-            <div class="acc-header" onclick="toggleAcc('acc-motor')">
-                <span>Motor algorithm</span><span class="arrow">▼</span>
-            </div>
+            <div class="acc-header" onclick="toggleAcc('acc-motor')"><span>Motor algorithm</span><span class="arrow">▼</span></div>
             <div class="acc-content">
                 <div class="slider-wrapper">
                     <div class="slider-meta"><span>Torque phase current limit</span></div>
                     <div class="slider-control-box">
-                        <input type="range" min="10" max="100" value="63" oninput="updateVal(this, 'torque-lbl', ' A')">
-                        <div class="slider-num-badge" id="torque-lbl">63 A</div>
-                    </div>
-                </div>
-                <div class="slider-wrapper">
-                    <div class="slider-meta"><span>Field phase current limit</span></div>
-                    <div class="slider-control-box">
-                        <input type="range" min="10" max="100" value="31" oninput="updateVal(this, 'field-lbl', ' A')">
-                        <div class="slider-num-badge" id="field-lbl">31 A</div>
+                        <input type="range" min="10" max="100" value="63" oninput="updateVal(this, 'tq-lbl', ' A')">
+                        <div class="slider-num-badge" id="tq-lbl">63 A</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ACCORDEON 4: FIELD WEAKENING -->
+        <!-- 4. FIELD WEAKENING -->
         <div class="card acc-card" id="acc-weakening">
-            <div class="acc-header" onclick="toggleAcc('acc-weakening')">
-                <span>Field weakening</span><span class="arrow">▼</span>
-            </div>
+            <div class="acc-header" onclick="toggleAcc('acc-weakening')"><span>Field weakening</span><span class="arrow">▼</span></div>
             <div class="acc-content">
                 <div class="slider-wrapper">
                     <div class="slider-meta"><span>Start speed</span></div>
                     <div class="slider-control-box">
-                        <input type="range" min="10" max="40" value="14" oninput="updateVal(this, 'start-sp-lbl', ' km/h')">
-                        <div class="slider-num-badge" id="start-sp-lbl">14 km/h</div>
+                        <input type="range" min="10" max="40" value="14" oninput="updateVal(this, 'fw-lbl', ' km/h')">
+                        <div class="slider-num-badge" id="fw-lbl">14 km/h</div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- 5. CRUISE CONTROL -->
+        <div class="card acc-card" id="acc-cruise">
+            <div class="acc-header" onclick="toggleAcc('acc-cruise')"><span>Cruise control</span><span class="arrow">▼</span></div>
+            <div class="acc-content">
+                <select><option>Time</option><option>Disabled</option></select>
+            </div>
+        </div>
+
+        <!-- 6. MODE SETTINGS -->
+        <div class="card acc-card" id="acc-modes">
+            <div class="acc-header" onclick="toggleAcc('acc-modes')"><span>Mode settings</span><span class="arrow">▼</span></div>
+            <div class="acc-content">
+                <div class="info-row"><span>S mode only</span><label class="switch"><input type="checkbox" checked><span class="slider-switch"></span></label></div>
+            </div>
+        </div>
+
+        <!-- 7. LIGHT SETTINGS -->
+        <div class="card acc-card" id="acc-lights">
+            <div class="acc-header" onclick="toggleAcc('acc-lights')"><span>Light settings</span><span class="arrow">▼</span></div>
+            <div class="acc-content">
+                <select><option>Car</option><option>Default</option><option>Always on</option></select>
+            </div>
+        </div>
+
+        <!-- 8. DASHBOARD SETTINGS -->
+        <div class="card acc-card" id="acc-dash">
+            <div class="acc-header" onclick="toggleAcc('acc-dash')"><span>Dashboard settings</span><span class="arrow">▼</span></div>
+            <div class="acc-content">
+                <select><option>Speed (km/h)</option><option>Battery level</option></select>
+            </div>
+        </div>
+
+        <!-- GLOBAL SETTINGS DROPDOWN ACCORDIONS -->
+        <h3>Global settings</h3>
+
+        <div class="card acc-card" id="glob-profile"><div class="acc-header" onclick="toggleAcc('glob-profile')"><span>Profile settings</span><span class="arrow">▼</span></div><div class="acc-content"><select><option>Profile 2</option></select></div></div>
+        <div class="card acc-card" id="glob-timers"><div class="acc-header" onclick="toggleAcc('glob-timers')"><span>Auto-shutdown timers</span><span class="arrow">▼</span></div><div class="acc-content"><p class="slider-desc">Timer Options inside</p></div></div>
+        <div class="card acc-card" id="glob-tail"><div class="acc-header" onclick="toggleAcc('glob-tail')"><span>Taillight settings</span><span class="arrow">▼</span></div><div class="acc-content"><p class="slider-desc">Tail adjustments</p></div></div>
+        <div class="card acc-card" id="glob-misc"><div class="acc-header" onclick="toggleAcc('glob-misc')"><span>Miscellaneous settings</span><span class="arrow">▼</span></div><div class="acc-content"><p class="slider-desc">Misc configurations</p></div></div>
     </div>
 
     <!-- VIEW 3: FIRMWARE VIEW -->
     <div class="view-content" id="view-firmware">
-        <h2>Firmware Operations</h2>
-        <div class="sub-desc">Flash or update vehicle system definitions here.</div>
-        <div class="card">
-            <button class="btn">Install SHFW</button>
-            <button class="btn" style="margin-top: 10px;">Install firmware package</button>
-        </div>
+        <h2>Firmware</h2>
+        <div class="card"><button class="btn">Install SHFW</button><button class="btn">Install firmware package</button></div>
     </div>
 
-    <!-- JAVASCRIPT FOR LUNA LOGIC -->
+    <!-- LOGIC SCRIPT -->
     <script>
-        // Sidebar Menü öffnen / schließen
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('sidebarOverlay');
@@ -609,46 +427,35 @@
             overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
         }
 
-        // Ansichten wechseln (Home, Settings, Firmware)
         function switchView(viewId, title) {
-            // Alle Ansichten ausblenden
-            document.querySelectorAll('.view-content').forEach(view => {
-                view.classList.remove('active');
-            });
-            // Gewählte Ansicht aktivieren
+            document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
             document.getElementById('view-' + viewId).classList.add('active');
-            
-            // Titel in der Navbar ändern
             document.getElementById('navTitle').innerText = title;
-            
-            // Aktiv-Klasse im Menü anpassen
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.classList.remove('active');
-            });
-            event.currentTarget.classList.add('active');
-            
-            // Menü schließen
             toggleSidebar();
         }
 
-        // Kacheln (Accordeons) auf- und zuklappen
         function toggleAcc(id) {
-            const card = document.getElementById(id);
-            card.classList.toggle('open');
+            document.getElementById(id).classList.toggle('open');
         }
 
-        // Live-Zahlenupdate bei Regler-Bewegung
         function updateVal(slider, labelId, unit) {
             document.getElementById(labelId).innerText = slider.value + unit;
         }
 
-        // Klick-Logik für die Modus-Chips (E, D, S)
-        document.querySelectorAll('.mode-chip').forEach(chip => {
-            chip.addEventListener('click', function() {
-                chip.parentElement.querySelectorAll('.mode-chip').forEach(c => c.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
+        /* MODAL CONTROL FOR CURVE BUILDER */
+        function openCurveBuilder() {
+            document.getElementById('curveModal').style.display = 'flex';
+        }
+
+        function closeCurveBuilder() {
+            document.getElementById('curveModal').style.display = 'none';
+        }
+
+        function adjustModalGraph() {
+            // Verändert die Neigung der Linie im Mini-Graph leicht, um Aktivität zu simulieren
+            const line = document.getElementById('modal-curve-line');
+            line.style.transform = `rotate(15deg) scaleY(1.1)`;
+        }
     </script>
 </body>
 </html>
