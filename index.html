@@ -2,122 +2,41 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luna | CFW Tuner</title>
     <style>
-        :root {
-            --bg-dark: #000000;
-            --bg-card: #0c1622;
-            --baby-blue: #3a9ad9;
-            --blue-glow: rgba(58, 154, 217, 0.25);
-            --text-main: #ffffff;
-            --text-muted: #8ea1b4;
-            --border-color: #1c2e42;
-            --btn-blue: #1d5fa7;
-        }
-
-        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: var(--bg-dark); color: var(--text-main); margin: 0; padding: 0; display: flex; flex-direction: column; min-height: 100vh; }
-
-        .navbar { background-color: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 15px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-        .nav-left { display: flex; align-items: center; }
-        .menu-btn { background: none; border: none; color: var(--text-main); font-size: 24px; cursor: pointer; margin-right: 20px; padding: 0; }
-        .nav-title { font-size: 22px; font-weight: 500; color: var(--baby-blue); }
-
-        .btn-connect { background-color: transparent; border: 1px solid var(--baby-blue); color: var(--baby-blue); padding: 6px 14px; border-radius: 20px; font-size: 13px; cursor: pointer; font-weight: bold; box-shadow: 0 0 8px var(--blue-glow); transition: all 0.2s ease; }
-        .btn-connect.connected { background-color: var(--baby-blue); color: #000; box-shadow: 0 0 12px var(--baby-blue); }
-
-        .sidebar { position: fixed; top: 0; left: -280px; width: 280px; height: 100%; background-color: var(--bg-card); border-right: 1px solid var(--border-color); z-index: 150; transition: left 0.25s ease; padding: 20px; display: flex; flex-direction: column; }
-        .sidebar.open { left: 0; }
-        .sidebar-header { font-size: 24px; font-weight: bold; color: var(--baby-blue); margin-bottom: 20px; }
-        .menu-item { display: flex; align-items: center; padding: 12px 15px; color: var(--text-main); text-decoration: none; border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
-        .menu-item.active { background-color: rgba(58, 154, 217, 0.1); color: var(--baby-blue); }
-        .disconnect-btn { margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 15px; }
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 140; display: none; }
-
-        .view-content { padding: 20px; max-width: 600px; width: 100%; margin: 0 auto; display: none; }
-        .view-content.active { display: block; }
-        
-        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin-bottom: 12px; }
-        h2 { color: var(--baby-blue); }
-        
-        .acc-card { padding: 0 16px; }
-        .acc-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; padding: 16px 0; }
-        .acc-content { display: none; padding-bottom: 16px; border-top: 1px solid var(--border-color); }
-        .acc-card.open .acc-content { display: block; }
-        
-        .val-badge { background-color: #132233; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px; color: var(--baby-blue); }
-        input[type="range"] { -webkit-appearance: none; flex: 1; height: 4px; background: #1e354f; border-radius: 2px; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: var(--baby-blue); border-radius: 50%; }
-        
-        .btn-blue { background-color: var(--btn-blue); color: white; border: none; padding: 12px; border-radius: 6px; width: 100%; cursor: pointer; margin-bottom: 10px; }
+        body { background: #000; color: #fff; font-family: sans-serif; padding: 20px; }
+        button { background: #3a9ad9; border: none; padding: 15px; color: white; width: 100%; margin-top: 10px; border-radius: 5px; }
     </style>
 </head>
 <body>
-
-    <div class="navbar">
-        <div class="nav-left">
-            <button class="menu-btn" onclick="toggleMenu()">☰</button>
-            <div class="nav-title" id="view-title">Luna</div>
-        </div>
-        <button class="btn-connect" id="btn-ble" onclick="connectScooter()">Connect</button>
-    </div>
-
-    <div class="sidebar-overlay" id="overlay" onclick="toggleMenu()"></div>
-    <div class="sidebar" id="sidebar">
-        <div class="sidebar-header">Luna</div>
-        <div class="menu-item active" onclick="navigate('home', 'Luna')">🏠 Home</div>
-        <div class="menu-item" onclick="navigate('settings', 'SHFW Settings')">⚙️ Settings</div>
-        <div class="menu-item" onclick="navigate('firmware', 'Firmware')">💾 Firmware</div>
-        <div class="menu-item disconnect-btn" onclick="disconnectScooter()">🔌 Disconnect</div>
-    </div>
-
-    <div class="view-content active" id="panel-home">
-        <div class="card">
-            <h3>Vehicle Info</h3>
-            <p>Status: <span id="ble-status" style="color:#ff5555;">Disconnected</span></p>
-        </div>
-    </div>
-
-    <div class="view-content" id="panel-settings">
-        <h2>Settings</h2>
-        <div class="card acc-card" id="k-accel">
-            <div class="acc-header" onclick="document.getElementById('k-accel').classList.toggle('open')"><span>Speed Limit</span><span>▼</span></div>
-            <div class="acc-content"><input type="range" min="1" max="45" value="22" oninput="document.getElementById('val-sl').innerText = this.value"><span class="val-badge" id="val-sl">22</span></div>
-        </div>
-    </div>
-
-    <div class="view-content" id="panel-firmware">
-        <h2>Firmware</h2>
-        <div class="card"><button class="btn-blue" onclick="alert('Installing SHFW...')">Install SHFW</button></div>
-    </div>
+    <h1>Luna Tuning App</h1>
+    <div id="status">Status: Disconnected</div>
+    <button id="btn-connect" onclick="connectScooter()">Connect Scooter</button>
+    <button onclick="toggleLight()">Licht umschalten</button>
 
     <script>
-        function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('open');
-            overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
-        }
-        function navigate(viewId, title) {
-            document.querySelectorAll('.view-content').forEach(v => v.classList.remove('active'));
-            document.getElementById('panel-' + viewId).classList.add('active');
-            document.getElementById('view-title').innerText = title;
-            toggleMenu();
-        }
+        let gattCharacteristic = null;
+
         async function connectScooter() {
             try {
                 const device = await navigator.bluetooth.requestDevice({
                     filters: [{ namePrefix: 'Ninebot' }],
                     optionalServices: ['6e400001-b5a3-f393-e0a9-e50e24dcca9e']
                 });
-                document.getElementById('ble-status').innerText = "Connected";
-                document.getElementById('btn-ble').innerText = "Connected";
-                document.getElementById('btn-ble').classList.add('connected');
-            } catch (err) { alert("Error: " + err.message); }
+                const server = await device.gatt.connect();
+                const service = await server.getPrimaryService('6e400001-b5a3-f393-e0a9-e50e24dcca9e');
+                gattCharacteristic = await service.getCharacteristic('6e400002-b5a3-f393-e0a9-e50e24dcca9e');
+                document.getElementById('status').innerText = "Status: Connected";
+            } catch (err) { alert("Verbindungsfehler: " + err.message); }
         }
-        function disconnectScooter() {
-            location.reload();
+
+        async function toggleLight() {
+            if (!gattCharacteristic) { alert("Erst mit Scooter verbinden!"); return; }
+            const lightOn = new Uint8Array([0x55, 0xAA, 0x03, 0x09, 0x01, 0x01, 0x02, 0xF1]);
+            try {
+                await gattCharacteristic.writeValue(lightOn);
+                alert("Licht-Befehl gesendet!");
+            } catch (err) { alert("Fehler: " + err.message); }
         }
     </script>
 </body>
